@@ -1,0 +1,25 @@
+.clear-height{height:4px;}
+.error, .warning, .allright, .upload{
+	border-width: 1px;
+	border-style: solid;
+	padding: 12px;
+	color:#000;
+}
+
+.clearboth { clear: both;}
+
+.error {
+	background-color: #ffebe8;
+	border-color: #c00;
+}
+
+.warning {
+	background-color: #ffffdd;
+	border-color: #ffd700;
+}
+
+.allright {
+	background-color: #ddffcc;
+	border-color: #0c0;
+}
+

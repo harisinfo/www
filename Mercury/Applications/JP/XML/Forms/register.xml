@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<register>
+
+<!-- title -->
+	<title required="true" type="options">
+		<language="en-UK">
+			<option>{$default_option_header}</option>
+			<option value="1" default="true">Mr.</option>
+			<option value="2">Mrs.</option>
+			<option value="3">Dr.</option>
+		</language>
+	</title>
+	
+<!-- first_name -->
+	<first_name required="true" type="text" validator="escape_string" />
+	
+<!-- last_name -->
+	<last_name required="true" type="text" validator="escape_string" />
+	
+<!-- email -->
+	<email required="true" type="email" validator="email" />
+	
+<!-- password -->
+	<password required="true" type="alphanumeric" min_length="6" max_length="12" validator_custom="^[A-Z][]a-z][0-9]_$" />
+	
+<!-- repeat password -->
+	<repeat_password required="true" type="alphanumeric" min_length="6" max_length="12" validator_relative="password" no_save="true" />
+	
+	
+<!-- account contact address -->
+
+	<address_line_1 type="text" validator="escape_string" />
+	<address_line_2 type="text" validator="escape_string" />
+	
+	<city type="text" validator="escape_string" />
+	<state type="text" validator="escape_string" />
+	
+	<postcode type="text" validator="escape_string" />
+	<telephone type="text" validator="escape_string" />
+	<mobile type="text" validator="escape_string" />
+
+	
+</register>

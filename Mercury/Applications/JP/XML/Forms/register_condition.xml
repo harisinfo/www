@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<register_condition>
+	<medical_question type="int" validator="intval" />
+	<more_info type="text" encoding="UTF-8" validator="escape_string" />
+</register_condition>
