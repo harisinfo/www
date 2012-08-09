@@ -4,7 +4,7 @@
 <!-- title -->
 	<title required="true" type="options">
 		<language="en-UK">
-			<option>{$default_option_header}</option>
+			<option>PHP_default_option_header</option>
 			<option value="1" default="true">Mr.</option>
 			<option value="2">Mrs.</option>
 			<option value="3">Dr.</option>
