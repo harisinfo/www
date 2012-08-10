@@ -6,12 +6,6 @@ class LoginManager extends FormManager
 {
 	public $request;
 	
-	public function __construct($request)
-	{
-		$this->request = $request;
-	}
-	
-	
 	public function init($request, $cmd=NULL)
 	{
 		switch($cmd)
@@ -49,7 +43,8 @@ class LoginManager extends FormManager
 			}
 			else
 			{
-				return FALSE;
+				$login_response['login']['show'] = TRUE;
+				return $login_response;
 			}
 		}
 		

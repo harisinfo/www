@@ -4,7 +4,7 @@
 ********************************************************/
 
 include_once( __CORE_DIR . '\\SessionManager\\SessionManager.class.php');
-include_once( __CORE_DIR . '\\XMLManager\\XMLManager.class.php');
+//include_once( __CORE_DIR . '\\XMLManager\\XMLManager.class.php');
 
 class FormManager extends SessionManager
 {    

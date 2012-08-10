@@ -12,16 +12,16 @@
 	</title>
 	
 <!-- first_name -->
-	<first_name required="true" type="text" validator="escape_string" />
+	<first_name required="true" type="text" validator="text" onsave="escape_string" />
 	
 <!-- last_name -->
-	<last_name required="true" type="text" validator="escape_string" />
+	<last_name required="true" type="text" validator="text" onsave="escape_string" />
 	
 <!-- email -->
-	<email required="true" type="email" validator="email" />
+	<email required="true" type="email" validator="email" onsave="escape_string"/>
 	
 <!-- password -->
-	<password required="true" type="alphanumeric" min_length="6" max_length="12" validator_custom="^[A-Z][]a-z][0-9]_$" />
+	<password required="true" type="alphanumeric" min_length="6" max_length="12" validator_custom="^[A-Z][a-z][0-9]_$" onsave="escape_string" />
 	
 <!-- repeat password -->
 	<repeat_password required="true" type="alphanumeric" min_length="6" max_length="12" validator_relative="password" no_save="true" />

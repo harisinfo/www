@@ -322,7 +322,12 @@ function create_dispatcher($request=NULL)
 					{
 						$response['name'] = $registered_modules[$request['search']['module']]['name'];
 						$response['class_name'] = $class_name;
-						$response['requires_login'] = $registered_modules[$request['search']['module']]['requires_login'];
+						
+						if(isset($registered_modules[$request['search']['module']]['requires_login'])===TRUE)
+						{
+							$response['requires_login'] = $registered_modules[$request['search']['module']]['requires_login'];
+						}
+						
 						$response['manager_name'] = $registered_modules[$request['search']['module']]['manager_name'];
 						$response['template'] = $registered_modules[$request['search']['module']]['template'];
 						$response['template_variable'] = $registered_modules[$request['search']['module']]['template_variable'];
@@ -354,4 +359,42 @@ function create_dispatcher($request=NULL)
 		
 		return $response;
 	}
+}
+
+
+function inject_modules($module_name, $request, $cmd)
+{
+	global $registered_modules, $default_class_extension;
+	
+	$response = array();
+	
+	if(isset($registered_modules[$module_name]['attach_module'])===TRUE)
+	{
+		foreach( $registered_modules[$module_name]['attach_module'] as $key => $value )
+		{
+			$class_name = $registered_modules[$module_name]['attach_module'][$key];
+			include_once( __APPLICATIONS_ROOT . "\\" . __APPLICATION_DIR . "\\" . __MODULE_DIR . "\\$class_name\\$class_name".$default_class_extension );
+			
+			if (!class_exists($class_name, false)) 
+    		{
+        				die_with_header(400, "Injection Failed for {$key} could not include " . 
+        								__APPLICATIONS_ROOT . "\\" . __APPLICATION_DIR . "\\" . __MODULE_DIR . 
+        								"\\$class_name\\$class_name".$default_class_extension);
+        				
+    		}
+    				
+    		if(class_exists($class_name)===true)
+			{
+				$module = new $class_name;
+				$t_response = $module->init($request, $cmd);
+				
+				if($t_response!==FALSE)
+				{
+					$response = array_merge($response,$t_response);
+				}
+			}
+		}
+	}
+	
+	return $response;
 }

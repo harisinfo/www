@@ -7,7 +7,7 @@ class SessionManager extends dbManager
 	
 	public function __construct()
 	{
-		var_dump( $_SESSION );
+		
 	}
 	
 	protected function addSessionEncrypted($key,$value)

@@ -4,21 +4,27 @@
 *														*
 ********************************************************/
 
+include_once( __APPLICATIONS_ROOT . '\\' . __APPLICATION_DIR . '\\' . __MODULE_DIR .'\\ProductManager\\ProductManager.class.php');
 
-class HomePageManager
-{    
-	
-	public function __construct($module)
-	{
-		$this->module = $module;
-	}
-	
-	
+class HomePageManager extends ProductManager
+{   
+	private $module_name = 'home';
+
 	public function init($request, $cmd = FALSE )
 	{
-		// enter your code here, define all methods as protected 
-		echo "Hello World!!";
-		return FALSE;
-		//return $this->showConditionManager($request);
+		global $registered_modules;
+		
+		$response = array();
+		$product_result = ProductManager::init($request);
+		$response = $product_result;
+		
+		$inject_response = inject_modules($this->module_name, $request, $cmd);
+		
+		if($inject_response!==FALSE)
+		{
+			$response = array_merge($inject_response, $response);
+		}
+		
+		return $response;
 	}
 }

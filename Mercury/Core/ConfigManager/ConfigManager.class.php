@@ -55,7 +55,6 @@ class ConfigManager extends XMLManager
 	public function validateXML()
 	{
 		$r = Parent::init($this->aXml,'validateSchema');
-		var_dump($r);
 	}
 	
 	protected function loadConfiguration()

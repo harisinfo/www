@@ -114,7 +114,7 @@ class ConditionManager extends LoginManager
 	
 	public function getConditionRelatedQuestions($request)
 	{
-		global $question_field;
+		global $question_field, $connection;
 		$response = array();
 		$response['results'] = false;
 		$response['condition_id'] = NULL;
@@ -139,19 +139,15 @@ class ConditionManager extends LoginManager
 		
 
 		$sql = $this->getResult( $query_request );
-		
 		$where = " WHERE medical_condition_question.medical_condition_id = " . intval($request['search']['condition_id']);
 		$where .= " AND medical_condition_question.show_medical_condition_question = 1 ";
 		$where .= " AND medical_condition_question.medical_condition_question_group =  " . MEDICAL_CONDITION_QUESTION_SPECIFIC;
-		
 		$order_by = " ORDER BY medical_condition_question.sort_order ASC";
-		
-		
 		$sql = $sql . $where . $order_by;
+		$esql = $connection->query($sql);
 		
-		$esql = mysql_query($sql) or db_die($sql);
+		$n = $esql->num_rows;
 		
-		$n = mysql_num_rows($esql);
 		
 		if($n>0)
 		{
@@ -164,7 +160,7 @@ class ConditionManager extends LoginManager
 			$field_locale = "question_text_" . DEFAULT_LABEL;
 			$field_condition_locale = "medical_condition_label_" . DEFAULT_LABEL;
 			
-			while($row=mysql_fetch_array($esql))
+			while($row=$esql->fetch_array(MYSQLI_ASSOC))
 			{
 				$response['condition_name'] = $row[$field_condition_locale];
 				$response['question_id'][$row['question_id']] = $row['question_id'];
@@ -182,7 +178,7 @@ class ConditionManager extends LoginManager
 	
 	private function getConditions($request=NULL)
 	{
-		global $medical_condition_label_table, $treatment_label_table;
+		global $medical_condition_label_table, $treatment_label_table, $connection;
 		
 		$medical_condition_label_table_lang = $medical_condition_label_table . "_" . DEFAULT_LABEL;
 		$treatment_label_table_lang = $treatment_label_table . "_" . DEFAULT_LABEL;
@@ -218,9 +214,10 @@ class ConditionManager extends LoginManager
 				
 		$order_by = "ORDER BY mc.sort_order, t.sort_order ASC";
 		$sql = $sql . $where . $order_by;
-		$result = mysql_query($sql) or db_die($sql);
+		//$result = mysql_query($sql) or db_die($sql);
+		$result = $connection->query($sql);
 				
-		while($row = mysql_fetch_array($result))
+		while($row = $result->fetch_array(MYSQLI_ASSOC))
 		{
 			$response['medical_condition_id'][ $row['medical_condition_id'] ] = $row['medical_condition_id'];
 			$response['treatment_id'][ $row['medical_condition_id'] ][ $row['treatment_id'] ] = $row['treatment_id'];
