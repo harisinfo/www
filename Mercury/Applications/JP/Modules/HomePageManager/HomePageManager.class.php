@@ -1,7 +1,7 @@
 <?php
 /********************************************************
-*	@Author: Hari Ramamurthy <info@harisinfo.co.uk>		*
-*														*
+*	@Author: Hari Ramamurthy <info@harisinfo.co.uk> *
+*							*							*
 ********************************************************/
 
 include_once( __APPLICATIONS_ROOT . '\\' . __APPLICATION_DIR . '\\' . __MODULE_DIR .'\\ProductManager\\ProductManager.class.php');
@@ -17,7 +17,6 @@ class HomePageManager extends ProductManager
 		$response = array();
 		$product_result = ProductManager::init($request);
 		$response = $product_result;
-		
 		$inject_response = inject_modules($this->module_name, $request, $cmd);
 		
 		if($inject_response!==FALSE)
