@@ -5,6 +5,6 @@
 <meta name="robots" content="noimageindex" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="stylesheet" type="text/css" href="css/style-v1.1.css" />
+<!--<link rel="stylesheet" type="text/css" href="css/style-v1.1.css" />-->
 <title></title>
 </head>

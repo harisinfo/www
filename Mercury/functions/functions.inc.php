@@ -330,7 +330,14 @@ function create_dispatcher($request=NULL)
 						
 						$response['manager_name'] = $registered_modules[$request['search']['module']]['manager_name'];
 						$response['template'] = $registered_modules[$request['search']['module']]['template'];
-						$response['template_variable'] = $registered_modules[$request['search']['module']]['template_variable'];
+						if(isset($response['template_variable'])===TRUE)
+						{
+							$response['template_variable'] = $registered_modules[$request['search']['module']]['template_variable'];
+						}
+						else
+						{
+							$response['template_variable'] = $default_template_variable;
+						}
 												
 						return $response;
 					}
