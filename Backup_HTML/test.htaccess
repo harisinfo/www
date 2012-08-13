@@ -1,0 +1,16 @@
+Options -Indexes +FollowSymlinks
+
+RewriteEngine on
+rewriteBase /
+rewritecond %{http_host} ^likemyhair.co.uk
+rewriteRule ^(.*) http://www.likemyhair.co.uk/$1 [R=301,L]
+#rewriteRule ^index.(.*)$ /home.html [L,NC,QSA]
+rewriteRule ^home.html$ /index.php?search_type=home_page [L,NC,QSA]
+#rewriteRule ^about-us.html$ /about-us.php [L,NC,QSA]
+#rewriteRule ^contact-us.html$ /contact-us.php [L,NC,QSA]
+#rewriteRule ^sitemap.html$ /sitemap.php [L,NC,QSA]
+#rewriteRule ^(.*)-hotels.html$ /home.php?opt=destination&searchTerm=$1 [L,NC,QSA]
+rewriteRule ^saloon-detail-(.*).html$ /saloon-detail.php?saloon_id=$1 [L,NC,QSA]
+rewriteRule ^saloon-advise-(.*).html$ /saloon-advises.php?saloon_advise_id=$1&advise=1 [L,NC,QSA]
+rewriteRule ^top-10.html$ /top.php?search_type=top_page [L,NC,QSA]
+rewriteRule ^vote.php$ /top.php [L,NC,QSA]

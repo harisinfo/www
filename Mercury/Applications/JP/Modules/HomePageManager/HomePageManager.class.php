@@ -1,7 +1,7 @@
 <?php
 /********************************************************
-*	@Author: Hari Ramamurthy <info@harisinfo.co.uk> *
-*							*							*
+*	@Author: Hari Ramamurthy <info@harisinfo.co.uk> 	*
+*														*
 ********************************************************/
 
 include_once( __APPLICATIONS_ROOT . '\\' . __APPLICATION_DIR . '\\' . __MODULE_DIR .'\\ProductManager\\ProductManager.class.php');

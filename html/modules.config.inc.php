@@ -51,12 +51,12 @@ $registered_modules['home']['name'] = 'home';
 $registered_modules['home']['manager_name'] = 'HomePageManager';
 $registered_modules['home']['attach_module']['CategoryManager'] = 'CategoryManager';
 $registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
-$registered_modules['home']['attach_module']['RegisterManager'] = 'RegisterManager';
+//$registered_modules['home']['attach_module']['RegisterManager'] = 'RegisterManager';
 //$registered_modules['home']['attach_module']['PageManager'] = 'PageManager'; //Loaded on every page by default
-$registered_modules['home']['template_variable'] = 'index_response';
+//$registered_modules['home']['template_variable'] = 'index_response';
 $registered_modules['home']['attached_module_variable'] = 'attached_module_variable';
 $registered_modules['home']['load_ajax_support'] = true;
-$registered_modules['home']['template'] = 'index.tpl';
+$registered_modules['home']['template'] = 'home.tpl';
 
 // products
 
@@ -69,7 +69,7 @@ $registered_modules['product']['template'] = 'index.tpl';
 
 $registered_modules['content']['name'] = 'content';
 $registered_modules['content']['manager_name'] = 'ContentManager';
-$registered_modules['content']['template_variable'] = 'product_response';
+//$registered_modules['content']['template_variable'] = 'product_response';
 $registered_modules['content']['template'] = 'index.tpl';
 
 // login
@@ -81,7 +81,7 @@ $registered_modules['login']['history_module'] = 'login';
 $registered_modules['login']['history_key_1'] = 'user_id';
 $registered_modules['login']['history_key_2'] = 'IP';
 $registered_modules['login']['requires_login'] = false;
-$registered_modules['login']['template_variable'] = 'login';
+//$registered_modules['login']['template_variable'] = 'login';
 $registered_modules['login']['template'] = 'login.tpl';
 
 // register_condition
@@ -104,6 +104,11 @@ $registered_modules['register']['manager_name'] = 'RegisterManager';
 $registered_modules['register']['requires_history'] = true;
 $registered_modules['register']['history_module'] = 'register';
 $registered_modules['register']['history_key_1'] = 'user_id';
-$registered_modules['register']['template_variable'] = 'register_questions';
+//$registered_modules['register']['template_variable'] = 'register_questions';
 $registered_modules['register']['template'] = 'register_user.tpl';
 
+
+// category
+
+$registered_modules['category']['name'] = 'category';
+$registered_modules['category']['manager_name'] = 'CategoryManager';
