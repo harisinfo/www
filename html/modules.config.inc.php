@@ -62,7 +62,8 @@ $registered_modules['home']['template'] = 'home.tpl';
 
 $registered_modules['product']['name'] = 'product';
 $registered_modules['product']['manager_name'] = 'ProductManager';
-$registered_modules['product']['template_variable'] = 'product_response';
+$registered_modules['home']['attach_module']['CategoryManager'] = 'CategoryManager';
+$registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
 $registered_modules['product']['template'] = 'index.tpl';
 
 // content
