@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.0, created on 2012-08-13 14:00:01
+<?php /* Smarty version Smarty 3.1.0, created on 2012-08-13 17:06:42
          compiled from "C:\wamp\www\html\Themes\V1.0\navigation-top.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:319425029023b73a482-25101209%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f88fa090b53c1eedc126c069669f384286e2f47f' => 
     array (
       0 => 'C:\\wamp\\www\\html\\Themes\\V1.0\\navigation-top.tpl',
-      1 => 1344866392,
+      1 => 1344877599,
       2 => 'file',
     ),
   ),
@@ -38,9 +38,12 @@ $_loop = true;
 <li>
 <?php echo $_smarty_tpl->tpl_vars['response']->value['category_label'][$_smarty_tpl->tpl_vars['key']->value];?>
 
-<?php if ($_smarty_tpl->tpl_vars['response']->value['sub_category_id'][$_smarty_tpl->tpl_vars['key']->value]){?>
-<ul>
-	<?php  $_smarty_tpl->tpl_vars['item1'] = new Smarty_Variable;
+	<?php if ($_smarty_tpl->tpl_vars['response']->value['sub_category_id'][$_smarty_tpl->tpl_vars['key']->value]){?>
+	<ul>
+		<li><a href="?module=product&category_id=<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">All Products - <?php echo $_smarty_tpl->tpl_vars['response']->value['category_label'][$_smarty_tpl->tpl_vars['key']->value];?>
+</a></li>
+		<?php  $_smarty_tpl->tpl_vars['item1'] = new Smarty_Variable;
  $_smarty_tpl->tpl_vars['key1'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['response']->value['sub_category_id'][$_smarty_tpl->tpl_vars['key']->value]; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 $_loop = false;
@@ -48,13 +51,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item1']->key => $_smarty_tpl->tpl_var
 $_loop = true;
  $_smarty_tpl->tpl_vars['key1']->value = $_smarty_tpl->tpl_vars['item1']->key;
 ?>
-		<?php if ($_smarty_tpl->tpl_vars['response']->value['sub_category_label'][$_smarty_tpl->tpl_vars['key']->value][$_smarty_tpl->tpl_vars['key1']->value]){?>
-			<li><?php echo $_smarty_tpl->tpl_vars['response']->value['sub_category_label'][$_smarty_tpl->tpl_vars['key']->value][$_smarty_tpl->tpl_vars['key1']->value];?>
-</li>
-		<?php }?>
-	<?php } ?>
-</ul>
-<?php }?>
+			<?php if ($_smarty_tpl->tpl_vars['response']->value['sub_category_label'][$_smarty_tpl->tpl_vars['key']->value][$_smarty_tpl->tpl_vars['key1']->value]){?>
+				<li><a href="?module=product&category_id=<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+&sub_category_id=<?php echo $_smarty_tpl->tpl_vars['key1']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['response']->value['sub_category_label'][$_smarty_tpl->tpl_vars['key']->value][$_smarty_tpl->tpl_vars['key1']->value];?>
+</a></li>
+			<?php }?>
+		<?php } ?>
+	</ul>
+	<?php }?>
 </li>
 <?php } ?>
 </ul>
