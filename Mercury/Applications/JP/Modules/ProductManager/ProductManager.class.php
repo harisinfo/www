@@ -75,7 +75,6 @@ class ProductManager extends LoginManager
 					{
 						$response['product_description'][ $row['product_id'] ] = $row['product_description'];
 					}
-					
 			}
 		}
 		
@@ -121,14 +120,14 @@ class ProductManager extends LoginManager
 			$where .= implode(" AND ", $where_sql);
 		}
 		
-		$order_by = " ORDER BY p.flag_featured_product DESC ";
-		
 		if( $request['search']['module']=='home')
 		{
-			$order_by .= ", p.flag_featured_home DESC";
+			$order_sql[] = " p.flag_featured_home DESC";
 		}
 		
-		$order_by .= ", p.rrp ASC";
+		$order_sql[] = " p.flag_featured_product DESC ";
+		$order_sql[] = " p.rrp ASC ";
+		$order_by .= implode(",", $order_sql);
 		$sql = $p_sql . $where . $order_by;
 		
 		return $sql;
