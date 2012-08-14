@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.0, created on 2012-08-13 13:33:47
+<?php /* Smarty version Smarty 3.1.0, created on 2012-08-14 15:11:10
          compiled from "C:\wamp\www\html\Themes\V1.0\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:229104ff4747021d217-58404745%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bb17e4ab6414925df41c873811589da5ed97c43d' => 
     array (
       0 => 'C:\\wamp\\www\\html\\Themes\\V1.0\\header.tpl',
-      1 => 1344864687,
+      1 => 1344957066,
       2 => 'file',
     ),
   ),
@@ -26,6 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <meta name="robots" content="noimageindex" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<!--<link rel="stylesheet" type="text/css" href="css/style-v1.1.css" />-->
+<link rel="stylesheet" type="text/css" href="css/style-v1.1.css" />
 <title></title>
 </head><?php }} ?>

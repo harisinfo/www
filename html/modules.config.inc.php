@@ -89,12 +89,14 @@ $registered_modules['login']['template'] = 'login.tpl';
 
 $registered_modules['condition']['name'] = 'condition';
 $registered_modules['condition']['manager_name'] = 'ConditionManager';
+$registered_modules['condition']['attach_module']['CategoryManager'] = 'CategoryManager';
+
 $registered_modules['condition']['requires_history'] = true;
 $registered_modules['condition']['history_module'] = 'user_condition';
 $registered_modules['condition']['history_key_1'] = 'user_id';
 $registered_modules['condition']['history_key_2'] = 'condition_id';
 $registered_modules['condition']['requires_login'] = false;
-$registered_modules['condition']['template_variable'] = 'condition_related_questions';
+//$registered_modules['condition']['template_variable'] = 'condition_related_questions';
 $registered_modules['condition']['template'] = 'register_condition.tpl';
 
 

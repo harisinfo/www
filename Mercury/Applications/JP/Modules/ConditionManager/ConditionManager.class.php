@@ -11,6 +11,7 @@ class ConditionManager extends LoginManager
 	
 	private $validateCondition = "validateConditionManager";
 	private $template = '';
+	private $module_name = "condition";
 
 	function __construct()
 	{
@@ -20,7 +21,20 @@ class ConditionManager extends LoginManager
 	
 	public function init($request, $cmd = FALSE )
 	{
-		return $this->showConditionManager($request);
+		global $registered_modules;
+		
+		$response = array();
+		
+		$response = $this->showConditionManager($request);
+		$inject_response = inject_modules($this->module_name, $request, $cmd);
+		
+		if($inject_response!==FALSE)
+		{
+			$response = array_merge($inject_response, $response);
+		}
+		
+		
+		return $response;
 	}
 		
 	

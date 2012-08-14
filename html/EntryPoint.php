@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set("display_errors", 1);
+ini_set("display_errors", 0);
 ini_set("include_path","C:\\wamp\\www\\Mercury");
 
 include_once('config.inc.php');
@@ -32,8 +32,7 @@ if(isset($dispatch['requires_login'])===TRUE && $dispatch['requires_login']===TR
 	if(isset($login_response['login'])===TRUE&&$login_response['login']==1
 	&&isset($login_response['user_id'])===TRUE&&is_numeric($login_response['user_id'])===TRUE)
 	{
-		// all is good
-		
+		// all is good, do something with this later
 	}
 	else
 	{
@@ -49,17 +48,6 @@ if(isset($dispatch['class_name'])===TRUE)
 	
 	$smarty->assign($dispatch['template_variable'],$response);
 	$smarty->assign('request',$request);
-	
-		/*if(isset($dispatch['attach_module'])===TRUE&&empty($dispatch['attach_module'])!==TRUE)
-		{
-			foreach($dispatch['attach_module'] as $key => $value)
-			{
-				$attach_module[$key] = new $dispatch['attach_module'][$key];
-				$r[$key] = $attach_module[$key]->init($request);
-			}
-		}*/
-	
-	
 	$smarty->display($dispatch['template']);
 }
 else

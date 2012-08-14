@@ -1,6 +1,6 @@
 <!-- Question -->
 <div id="question_{$key}" class="">
-{$condition_related_questions.question_text_default.$key}
+{$response.question_text_default.$key}
 </div>
 
 <!-- Answer options -->

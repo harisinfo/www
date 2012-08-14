@@ -20,7 +20,7 @@ class FormManager extends SessionManager
 		{
 			switch($value)
 			{
-				case 'YES_NO_MORE_DETAILS':
+				case 'YES_MORE_DETAILS_NO':
 				
 					if(isset($request['answer'][$key]) === true)
 					{
@@ -38,6 +38,26 @@ class FormManager extends SessionManager
 					}
 					
 				break;
+				
+				case 'YES_NO_MORE_DETAILS':
+				
+					if(isset($request['answer'][$key]) === true)
+					{
+						if(intval($request['answer'][$key]) == 0&&trim($request['more_info'][$key])=='')
+						{
+							$response['error_flag'] = true;
+							$response['error_message'] = MORE_INFO_REQUIRED_YES_SOMETIMES;
+						}
+							
+					}
+					else
+					{
+						$response['error_flag'] = true;
+						$response['error_message'] = ANSWER_SELECTION_REQUIRED;
+					}
+					
+				break;
+				
 				case 'MORE_DETAILS':
 					if(isset($request['more_info'][$key]) === true)
 					{

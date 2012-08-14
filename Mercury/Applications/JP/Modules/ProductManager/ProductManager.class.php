@@ -1,9 +1,6 @@
 <?php
 /********************************************************
-*	Class to perform Search  on Conditions and other 	*
-*	advanced search capabilities						*
 *	@Author: Hari Ramamurthy <info@harisinfo.co.uk>		*
-*														*
 ********************************************************/
 
 include_once( __APPLICATIONS_ROOT . '\\' . __APPLICATION_DIR . '\\' . __MODULE_DIR .'\\LoginManager\\LoginManager.class.php');
@@ -32,7 +29,7 @@ class ProductManager extends LoginManager
 	
 	protected function showProductManager($request)
 	{
-		if(isset($request['search']['condition_id'])===true && is_numeric($request['search']['condition_id'])===true)
+		if(isset($request['search']['condition_id'])===true && is_numeric(intval($request['search']['condition_id']))===true)
 		{
 			// condition products	
 		}
@@ -70,6 +67,8 @@ class ProductManager extends LoginManager
 				$response['product_title'][ $row['product_id'] ] = $row['product_title'];
 				$response['product_attributes'][ $row['product_id'] ] = $row['product_attributes'];
 				$response['rrp'][ $row['product_id'] ] = $row['rrp'];
+				$response['flag_requires_questionaire'][ $row['product_id'] ] = $row['flag_requires_questionaire'];
+				$response['flag_requires_doctor_approval'][ $row['product_id'] ] = $row['flag_requires_doctor_approval'];
 				
 					if(isset($request['search']['product_id'])===TRUE && is_int($request['search']['product_id'])===TRUE)
 					{
