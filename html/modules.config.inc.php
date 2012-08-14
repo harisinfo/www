@@ -50,7 +50,7 @@ $default_class_extension = ".class.php";
 $registered_modules['home']['name'] = 'home';
 $registered_modules['home']['manager_name'] = 'HomePageManager';
 $registered_modules['home']['attach_module']['CategoryManager'] = 'CategoryManager';
-$registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
+//$registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
 //$registered_modules['home']['attach_module']['RegisterManager'] = 'RegisterManager';
 //$registered_modules['home']['attach_module']['PageManager'] = 'PageManager'; //Loaded on every page by default
 //$registered_modules['home']['template_variable'] = 'index_response';
@@ -63,8 +63,8 @@ $registered_modules['home']['template'] = 'home.tpl';
 $registered_modules['product']['name'] = 'product';
 $registered_modules['product']['manager_name'] = 'ProductManager';
 $registered_modules['home']['attach_module']['CategoryManager'] = 'CategoryManager';
-$registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
-$registered_modules['product']['template'] = 'index.tpl';
+//$registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
+$registered_modules['product']['template'] = 'home.tpl';
 
 // content
 
