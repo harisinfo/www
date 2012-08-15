@@ -58,6 +58,21 @@ class FormManager extends SessionManager
 					
 				break;
 				
+				case 'DD_MM_YYYY':
+				
+					if(isset($request['answer_dd'][$key]) === true)
+					{
+						echo $key . " " . $request['answer'][$key] . "<br />";
+							
+					}
+					else
+					{
+						$response['error_flag'] = true;
+						$response['error_message'] = ANSWER_SELECTION_REQUIRED;
+					}
+
+				break;
+				
 				case 'MORE_DETAILS':
 					if(isset($request['more_info'][$key]) === true)
 					{

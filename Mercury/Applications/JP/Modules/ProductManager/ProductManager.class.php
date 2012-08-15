@@ -14,7 +14,6 @@ class ProductManager extends LoginManager
 	{
 		global $registered_modules;
 		$response = array();
-		
 		$response = $this->showProductManager($request);
 		$inject_response = inject_modules($this->module_name, $request, $cmd);
 		
@@ -50,9 +49,7 @@ class ProductManager extends LoginManager
 	protected function showNormalProduct($request)
 	{
 		global $connection;
-		
 		$response = array();
-		
 		$result = $connection->query($this->buildNormalProductQuery($request));
 		$n = $result->num_rows;
 		

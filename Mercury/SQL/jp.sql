@@ -3,7 +3,7 @@
 -- Server version:               5.1.53-community-log - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2012-08-14 18:41:59
+-- Date/time:                    2012-08-15 18:24:24
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -78,13 +78,14 @@ CREATE TABLE IF NOT EXISTS `medical_condition` (
   `gender` smallint(1) DEFAULT NULL COMMENT '0 - Male, 1 - Female, 2 - No Preference',
   `flag_hide` smallint(1) DEFAULT NULL,
   PRIMARY KEY (`medical_condition_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table jp.medical_condition: 2 rows
+-- Dumping data for table jp.medical_condition: 3 rows
 /*!40000 ALTER TABLE `medical_condition` DISABLE KEYS */;
 REPLACE INTO `medical_condition` (`medical_condition_id`, `medical_condition_label`, `medical_condition_label_en_UK`, `gender`, `flag_hide`) VALUES
 	(1, 'Weight Loss', 'Weight Loss', 2, 0),
-	(2, 'Emergency Contraception', 'Emergency Contraception', 2, 0);
+	(2, 'Emergency Contraception', 'Emergency Contraception', 2, 0),
+	(3, 'Hair Loss', 'Hair Loss', 0, 0);
 /*!40000 ALTER TABLE `medical_condition` ENABLE KEYS */;
 
 
@@ -97,35 +98,39 @@ CREATE TABLE IF NOT EXISTS `medical_condition_question` (
   `medical_condition_id` int(10) DEFAULT NULL,
   `question_id` int(20) DEFAULT NULL,
   `flag_required` tinyint(1) DEFAULT '0',
+  `validation_rule` enum('','AGE_18-65') NOT NULL DEFAULT '',
   `show_medical_condition_question` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`medical_condition_question_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Dumping data for table jp.medical_condition_question: 16 rows
+-- Dumping data for table jp.medical_condition_question: 22 rows
 /*!40000 ALTER TABLE `medical_condition_question` DISABLE KEYS */;
-REPLACE INTO `medical_condition_question` (`medical_condition_question_id`, `medical_condition_question_group`, `sort_order`, `medical_condition_id`, `question_id`, `flag_required`, `show_medical_condition_question`) VALUES
-	(1, 1, 1, 1, 1, 1, 1),
-	(2, 1, 2, 1, 2, 1, 1),
-	(3, 1, 3, 1, 3, 1, 1),
-	(4, 1, 4, 1, 4, 1, 1),
-	(5, 1, 5, 1, 5, 1, 1),
-	(6, 1, 6, 1, 6, 1, 1),
-	(7, 1, 7, 1, 7, 1, 1),
-	(8, 1, 8, 1, 8, 1, 1),
-	(9, 1, 9, 1, 9, 1, 1),
-	(10, 1, 10, 1, 10, 1, 1),
-	(11, 1, 11, 1, 11, 1, 1),
-	(12, 1, 12, 1, 12, 1, 1),
-	(13, 1, 13, 1, 13, 1, 1),
-	(14, 1, 14, 1, 14, 1, 1),
-	(15, 1, 15, 1, 15, 1, 1),
-	(16, 1, 1, 2, 16, 1, 1),
-	(17, 1, 2, 2, 17, 1, 1),
-	(18, 1, 3, 2, 18, 1, 1),
-	(19, 1, 4, 2, 19, 1, 1),
-	(20, 1, 5, 2, 20, 1, 1),
-	(21, 1, 6, 2, 21, 1, 1),
-	(22, 1, 6, 2, 22, 1, 1);
+REPLACE INTO `medical_condition_question` (`medical_condition_question_id`, `medical_condition_question_group`, `sort_order`, `medical_condition_id`, `question_id`, `flag_required`, `validation_rule`, `show_medical_condition_question`) VALUES
+	(1, 1, 1, 1, 1, 1, '', 1),
+	(2, 1, 2, 1, 2, 1, '', 1),
+	(3, 1, 3, 1, 3, 1, '', 1),
+	(4, 1, 4, 1, 4, 1, '', 1),
+	(5, 1, 5, 1, 5, 1, '', 1),
+	(6, 1, 6, 1, 6, 1, '', 1),
+	(7, 1, 7, 1, 7, 1, '', 1),
+	(8, 1, 8, 1, 8, 1, '', 1),
+	(9, 1, 9, 1, 9, 1, '', 1),
+	(10, 1, 10, 1, 10, 1, '', 1),
+	(11, 1, 11, 1, 11, 1, '', 1),
+	(12, 1, 12, 1, 12, 1, '', 1),
+	(13, 1, 13, 1, 13, 1, '', 1),
+	(14, 1, 14, 1, 14, 1, '', 1),
+	(15, 1, 15, 1, 15, 1, '', 1),
+	(16, 1, 1, 2, 16, 1, '', 1),
+	(17, 1, 2, 2, 17, 1, '', 1),
+	(18, 1, 3, 2, 18, 1, '', 1),
+	(19, 1, 4, 2, 19, 1, '', 1),
+	(20, 1, 5, 2, 20, 1, '', 1),
+	(21, 1, 6, 2, 21, 1, '', 1),
+	(22, 1, 1, 3, 23, 1, 'AGE_18-65', 1),
+	(23, 1, 2, 3, 24, 1, '', 1),
+	(24, 1, 3, 3, 25, 1, '', 1),
+	(25, 1, 4, 3, 26, 1, '', 1);
 /*!40000 ALTER TABLE `medical_condition_question` ENABLE KEYS */;
 
 
@@ -209,13 +214,13 @@ CREATE TABLE IF NOT EXISTS `question` (
   `question_id` int(20) NOT NULL AUTO_INCREMENT,
   `question_text` text NOT NULL,
   `question_text_en_UK` text NOT NULL,
-  `question_template` enum('YES_NO','YES_NO_MORE_DETAILS','YES_SOMETIMES_NO_MORE_DETAILS','YES_SOMETIMES_NO','MORE_DETAILS','YES_MORE_DETAILS_NO') NOT NULL,
-  `default_selection` enum('','YES','NO') NOT NULL,
+  `question_template` enum('YES_NO','YES_NO_MORE_DETAILS','YES_SOMETIMES_NO_MORE_DETAILS','YES_SOMETIMES_NO','MORE_DETAILS','YES_MORE_DETAILS_NO','DD_MM_YYYY') NOT NULL,
+  `default_selection` enum('','YES','NO','TODAY-18','TODAY-16','TODAY-21') NOT NULL,
   `show_question_global` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`question_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
--- Dumping data for table jp.question: 17 rows
+-- Dumping data for table jp.question: 23 rows
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
 REPLACE INTO `question` (`question_id`, `question_text`, `question_text_en_UK`, `question_template`, `default_selection`, `show_question_global`) VALUES
 	(1, 'To date, have you ever taken any weight loss prescription treatments such as Reductil, Xenical, Acomplia or Phentermine? If yes which one and when did you last take this treatment?', 'To date, have you ever taken any weight loss prescription treatments such as Reductil, Xenical, Acomplia or Phentermine? If yes which one and when did you last take this treatment?', 'YES_MORE_DETAILS_NO', 'NO', 1),
@@ -239,7 +244,11 @@ REPLACE INTO `question` (`question_id`, `question_text`, `question_text_en_UK`, 
 	(19, 'Have you ever had an allergy or other reaction to levonorgestrel, which is the active ingredient in Levonelle®. It is also found in some other hormonal products that your healthcare professional may have prescribed for you in the past such as the mini-pill and some combined contraceptive pills.', 'Have you ever had an allergy or other reaction to levonorgestrel, which is the active ingredient in Levonelle®. It is also found in some other hormonal products that your healthcare professional may have prescribed for you in the past such as the mini-pill and some combined contraceptive pills.', 'YES_MORE_DETAILS_NO', 'NO', 1),
 	(20, 'Are you taking any other medication? If yes, please provide more information. You should include details of any herbal remedies that you are taking as well as remembering to include any pills, tablets, inhalers & syrups.', 'Are you taking any other medication? If yes, please provide more information. You should include details of any herbal remedies that you are taking as well as remembering to include any pills, tablets, inhalers & syrups.', 'YES_MORE_DETAILS_NO', 'NO', 1),
 	(21, 'Have you had unprotected sex within the last 3 days (72 hours)? If yes, please provide more details as to the date and time of the event. Morning after pill is not a suitable form of contraception if you had unprotected sex more than 3 days (72 hours) ago.', 'Have you had unprotected sex within the last 3 days (72 hours)? If yes, please provide more details as to the date and time of the event. Morning after pill is not a suitable form of contraception if you had unprotected sex more than 3 days (72 hours) ago.', 'YES_MORE_DETAILS_NO', 'YES', 1),
-	(22, 'Was your last period unusual in any way? If yes, please provide details in the box provided below', 'Was your last period unusual in any way? If yes, please provide details in the box provided below', 'YES_MORE_DETAILS_NO', 'NO', 1);
+	(22, 'Was your last period unusual in any way? If yes, please provide details in the box provided below', 'Was your last period unusual in any way? If yes, please provide details in the box provided below', 'YES_MORE_DETAILS_NO', 'NO', 1),
+	(23, 'What is your date of birth?', 'What is your date of birth?', 'DD_MM_YYYY', 'TODAY-18', 1),
+	(24, 'Will all the medication in your basket be taken by you?', 'Will all the medication in your basket be taken by you?', 'YES_NO_MORE_DETAILS', 'YES', 1),
+	(25, 'Do you have any existing conditions or are you taking other medication?', 'Do you have any existing conditions or are you taking other medication?', 'YES_MORE_DETAILS_NO', 'NO', 1),
+	(26, 'What symptoms are going to be treated with the medication?', 'What symptoms are going to be treated with the medication?', 'MORE_DETAILS', '', 1);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.0, created on 2012-08-14 16:29:50
+<?php /* Smarty version Smarty 3.1.0, created on 2012-08-15 16:10:52
          compiled from "C:\wamp\www\html\Themes\V1.0\register_condition.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:79934ff4747013b7b4-57382220%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a366567a22469463f806aebf896fdbd0c846e062' => 
     array (
       0 => 'C:\\wamp\\www\\html\\Themes\\V1.0\\register_condition.tpl',
-      1 => 1344961780,
+      1 => 1345047049,
       2 => 'file',
     ),
   ),
@@ -61,6 +61,9 @@ $_loop = true;
 
 	 	<?php }elseif($_smarty_tpl->tpl_vars['response']->value['question_template'][$_smarty_tpl->tpl_vars['key']->value]=='YES_NO'){?>
 	 		<?php echo $_smarty_tpl->getSubTemplate ('html_helpers/yes_no.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+	 	<?php }elseif($_smarty_tpl->tpl_vars['response']->value['question_template'][$_smarty_tpl->tpl_vars['key']->value]=='DD_MM_YYYY'){?>
+	 		<?php echo $_smarty_tpl->getSubTemplate ('html_helpers/dd_mm_yyyy.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 	 	<?php }elseif($_smarty_tpl->tpl_vars['response']->value['question_template'][$_smarty_tpl->tpl_vars['key']->value]=='MORE_DETAILS'){?>
 	 		<?php echo $_smarty_tpl->getSubTemplate ('html_helpers/more_details.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>

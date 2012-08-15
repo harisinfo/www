@@ -20,6 +20,8 @@
 	 		{include file='html_helpers/yes_more_details_no.tpl'}
 	 	{elseif $response.question_template.$key == 'YES_NO'}
 	 		{include file='html_helpers/yes_no.tpl'}
+	 	{elseif $response.question_template.$key == 'DD_MM_YYYY'}
+	 		{include file='html_helpers/dd_mm_yyyy.tpl'}
 	 	{elseif $response.question_template.$key == 'MORE_DETAILS'}
 	 		{include file='html_helpers/more_details.tpl'}
 	 	{/if}
