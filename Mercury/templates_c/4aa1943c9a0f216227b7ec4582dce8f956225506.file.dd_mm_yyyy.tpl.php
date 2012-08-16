@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.0, created on 2012-08-15 17:03:13
+<?php /* Smarty version Smarty 3.1.0, created on 2012-08-16 08:33:11
          compiled from "C:\wamp\www\html\Themes\V1.0\html_helpers\dd_mm_yyyy.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:22085502bca0ce46d75-49191911%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4aa1943c9a0f216227b7ec4582dce8f956225506' => 
     array (
       0 => 'C:\\wamp\\www\\html\\Themes\\V1.0\\html_helpers\\dd_mm_yyyy.tpl',
-      1 => 1345050182,
+      1 => 1345105988,
       2 => 'file',
     ),
   ),
@@ -35,12 +35,37 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
 <!-- Answer options -->
-<div id="options_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+<!--<div id="options_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 " class="">
 <input type="text" name="answer_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 " id="answer_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 " value="" />
+</div>-->
+
+<div id="options_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" class="">
+
+<select name="answer_dd_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="answer_0_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+<option value="01">01</option>
+</select>
+/
+<select name="answer_mm_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="answer_0_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+<option value="01">01</option>
+</select>
+/
+<select name="answer_yyyy_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="answer_0_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+<option value="2009">2009</option>
+</select>
+
 </div>
+
+
 
 </div>
 

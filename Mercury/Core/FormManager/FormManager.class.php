@@ -59,11 +59,15 @@ class FormManager extends SessionManager
 				break;
 				
 				case 'DD_MM_YYYY':
-				
-					if(isset($request['answer_dd'][$key]) === true)
+					
+					if(isset($request['answer']['dd_'.$key]) === true&&isset($request['answer']['mm_'.$key]) === true
+						&&isset($request['answer']['yyyy_'.$key]) === true)
 					{
-						echo $key . " " . $request['answer'][$key] . "<br />";
-							
+						if(intval($request['answer']['dd_'.$key])==0||intval($request['answer']['mm_'.$key])==0||intval($request['answer']['yyyy_'.$key])==0)
+						{
+							$response['error_flag'] = true;
+							$response['error_message'] = ANSWER_SELECTION_REQUIRED;
+						}
 					}
 					else
 					{

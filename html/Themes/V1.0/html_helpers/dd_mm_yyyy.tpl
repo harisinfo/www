@@ -6,9 +6,27 @@
 </div>
 
 <!-- Answer options -->
-<div id="options_{$key}" class="">
+<!--<div id="options_{$key}" class="">
 <input type="text" name="answer_{$key}" id="answer_{$key}" value="" />
+</div>-->
+
+<div id="options_{$key}" class="">
+
+<select name="answer_dd_{$key}" id="answer_0_{$key}">
+<option value="01">01</option>
+</select>
+/
+<select name="answer_mm_{$key}" id="answer_0_{$key}">
+<option value="01">01</option>
+</select>
+/
+<select name="answer_yyyy_{$key}" id="answer_0_{$key}">
+<option value="2009">2009</option>
+</select>
+
 </div>
+
+
 
 </div>
 

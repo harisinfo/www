@@ -1,1 +1,0 @@
-{"results": [{"id": "London", "value": "London", "info": ""}, {"id": "Manchester", "value": "Manchester", "info": ""}]} 

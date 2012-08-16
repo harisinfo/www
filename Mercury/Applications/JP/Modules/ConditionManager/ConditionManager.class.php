@@ -97,13 +97,25 @@ class ConditionManager extends LoginManager
 				unset($answers);
 				$answer_key = "answer_".$key;
 				$more_info_key = "more_info_".$key;
+				// hook for date fields
+				
+				if($key==23)
+				{
+					$answer_key_dd = "answer_dd_".$key;
+					$answer_key_mm = "answer_mm_".$key;
+					$answer_key_yyyy = "answer_yyyy_".$key;
+					
+					$answers['answer']['dd_'.$key] = $request['search'][$answer_key_dd];
+					$answers['answer']['mm_'.$key] = $request['search'][$answer_key_mm];
+					$answers['answer']['yyyy_'.$key] = $request['search'][$answer_key_yyyy];
+				}
 				
 				$answers['answer'][$key] = $request['search'][$answer_key];
 				$answers['more_info'][$key] = $request['search'][$more_info_key];
 				$answers['template'][$key] = $questions['question_template'][$key];
 				
 				$validation_response = array();
-				$validation_response = parent::validateForm($answers, $response);
+				$validation_response = FormManager::validateForm($answers); // removed ,$response
 				
 				$response['error_flag'][$key] = $validation_response['error_flag'];
 				$response['error_message'][$key] = $validation_response['error_message'];				
