@@ -3,7 +3,7 @@
 -- Server version:               5.1.53-community-log - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2012-08-16 18:03:19
+-- Date/time:                    2012-08-17 18:28:32
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -136,18 +136,10 @@ CREATE TABLE IF NOT EXISTS `product` (
   `date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `brand` varchar(75) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_keyword` varchar(255) NOT NULL,
-  `product_title` text NOT NULL,
+  `product_title` varchar(75) NOT NULL,
+  `product_keyword` varchar(75) NOT NULL,
   `product_description` longtext NOT NULL,
   `product_attributes` longtext NOT NULL,
-  `whole_sale_price` decimal(5,3) NOT NULL DEFAULT '0.000',
-  `rrp` decimal(5,3) NOT NULL DEFAULT '0.000',
-  `cost_price` decimal(5,3) NOT NULL DEFAULT '0.000',
-  `selling_price` decimal(5,3) NOT NULL DEFAULT '0.000',
-  `dispense_ml` int(10) NOT NULL DEFAULT '0',
-  `dispense_mg` int(10) NOT NULL DEFAULT '0',
-  `dispense_no` int(10) NOT NULL DEFAULT '0',
   `flag_lock` tinyint(1) NOT NULL DEFAULT '0',
   `flag_hide` tinyint(1) NOT NULL DEFAULT '1',
   `flag_delete` tinyint(1) NOT NULL DEFAULT '0',
@@ -160,52 +152,63 @@ CREATE TABLE IF NOT EXISTS `product` (
   KEY `sub_category_id` (`sub_category_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table jp.product: 3 rows
+-- Dumping data for table jp.product: 2 rows
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-REPLACE INTO `product` (`product_id`, `category_id`, `sub_category_id`, `date_created`, `date_modified`, `brand`, `product_name`, `product_keyword`, `product_title`, `product_description`, `product_attributes`, `whole_sale_price`, `rrp`, `cost_price`, `selling_price`, `dispense_ml`, `dispense_mg`, `dispense_no`, `flag_lock`, `flag_hide`, `flag_delete`, `flag_featured_product`, `flag_featured_home`, `flag_requires_questionaire`, `flag_requires_doctor_approval`) VALUES
-	(3, 2, 12, '0000-00-00 00:00:00', '2012-08-16 15:25:53', 'Regaine', 'Regaine Foam Single Pack', 'Regaine Foam Single Pack', 'Regaine Foam Single Pack', 'REGAINE® Foam is the first and only clinically proven foam hair loss treatment for men. It works by increasing the blood supply to the hair follicles, which helps to strengthen existing hair and stimulate secondary hair growth. The easy-to-use foam takes very little time to apply, meaning it seamlessly fits into your daily grooming routine.\r\n\r\n\r\nHelps prevent further hair loss and regrow hair\r\nResults may be noticeable in just 8 weeks\r\nApply directly to your scalp—twice a day, every day\r\nGoes on easily and dries quickly\r\nIs unscented\r\nREGAINE® Foam is licensed for hereditary hair loss in Men aged 18 to 49. The cut off age of 49 is based on the upper age limit in the trials submitted for license.', '', 9.999, 34.950, 0.000, 0.000, 60, 0, 0, 0, 0, 0, 1, 1, 1, 0),
-	(2, 4, 22, '0000-00-00 00:00:00', '2012-08-14 12:08:30', 'Bayer', 'Levonelle One-step Morning After Pill', 'Levonelle One-step Morning After Pill', 'Levonelle One-step Morning After Pill', 'Levonelle One-step Morning After Pill emergency contraception, or known as the morning-after-pill, is a form of birth control designed to be used should other methods fail or unprotected intercourse occur. Morning-after-pill is usually used the day after unprotected sexual activity.\r\n\r\nLondon Customers: Patients wishing to purchase from London Postcodes (N, NW, W, SW, EC and WC) can now receive their treatments via on the same day, absolutely FREE of shipping charge.', '', 9.990, 10.990, 0.000, 0.000, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
-	(4, 2, 12, '0000-00-00 00:00:00', '2012-08-16 15:26:02', 'Regaine', 'Regaine Foam Triple Pack', 'Regaine Foam Triple Pack', 'Regaine Foam Triple Pack', 'REGAINE® Foam is the first and only clinically proven foam hair loss treatment for men. It works by increasing the blood supply to the hair follicles, which helps to strengthen existing hair and stimulate secondary hair growth. The easy-to-use foam takes very little time to apply, meaning it seamlessly fits into your daily grooming routine.\r\n\r\n\r\nHelps prevent further hair loss and regrow hair\r\nResults may be noticeable in just 8 weeks\r\nApply directly to your scalp—twice a day, every day\r\nGoes on easily and dries quickly\r\nIs unscented\r\nREGAINE® Foam is licensed for hereditary hair loss in Men aged 18 to 49. The cut off age of 49 is based on the upper age limit in the trials submitted for license.', '', 9.999, 69.900, 0.000, 0.000, 60, 0, 3, 0, 0, 0, 1, 1, 1, 0);
+REPLACE INTO `product` (`product_id`, `category_id`, `sub_category_id`, `date_created`, `date_modified`, `brand`, `product_title`, `product_keyword`, `product_description`, `product_attributes`, `flag_lock`, `flag_hide`, `flag_delete`, `flag_featured_product`, `flag_featured_home`, `flag_requires_questionaire`, `flag_requires_doctor_approval`) VALUES
+	(3, 2, 12, '0000-00-00 00:00:00', '2012-08-17 11:25:25', 'Regaine', 'Regaine', '', 'REGAINE® Foam is the first and only clinically proven foam hair loss treatment for men. It works by increasing the blood supply to the hair follicles, which helps to strengthen existing hair and stimulate secondary hair growth. The easy-to-use foam takes very little time to apply, meaning it seamlessly fits into your daily grooming routine.\r\n\r\n\r\nHelps prevent further hair loss and regrow hair\r\nResults may be noticeable in just 8 weeks\r\nApply directly to your scalp—twice a day, every day\r\nGoes on easily and dries quickly\r\nIs unscented\r\nREGAINE® Foam is licensed for hereditary hair loss in Men aged 18 to 49. The cut off age of 49 is based on the upper age limit in the trials submitted for license.', '', 0, 0, 0, 1, 1, 1, 0),
+	(2, 4, 22, '0000-00-00 00:00:00', '2012-08-17 11:25:34', 'Bayer', 'Levonelle', '', 'Levonelle One-step Morning After Pill emergency contraception, or known as the morning-after-pill, is a form of birth control designed to be used should other methods fail or unprotected intercourse occur. Morning-after-pill is usually used the day after unprotected sexual activity.\r\n\r\nLondon Customers: Patients wishing to purchase from London Postcodes (N, NW, W, SW, EC and WC) can now receive their treatments via on the same day, absolutely FREE of shipping charge.', '', 0, 0, 0, 0, 0, 1, 0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 
--- Dumping structure for table jp.product_group
-DROP TABLE IF EXISTS `product_group`;
-CREATE TABLE IF NOT EXISTS `product_group` (
-  `product_group_id` int(10) NOT NULL AUTO_INCREMENT,
-  `product_group_name` varchar(120) DEFAULT '',
-  `product_group_label` varchar(120) DEFAULT '',
-  `product_group_label_en_UK` varchar(120) DEFAULT '',
-  `product_group_brand` varchar(120) DEFAULT '',
-  `product_group_brand_en_UK` varchar(120) DEFAULT '',
-  `product_group_sales_rank` int(10) DEFAULT '0',
-  `hide_product_group` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`product_group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+-- Dumping structure for table jp.product_detail
+DROP TABLE IF EXISTS `product_detail`;
+CREATE TABLE IF NOT EXISTS `product_detail` (
+  `product_detail_id` int(10) NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) NOT NULL DEFAULT '0',
+  `product_detail_name` varchar(120) DEFAULT '',
+  `product_detail_label` varchar(120) DEFAULT '',
+  `product_detail_keyword` varchar(75) DEFAULT '',
+  `product_detail_description` longtext,
+  `product_detail_attribute` longtext,
+  `dispense_ml` int(10) DEFAULT '0',
+  `dispense_mg` int(10) DEFAULT '0',
+  `dispense_number` int(10) DEFAULT '0',
+  `product_rrp` decimal(5,3) DEFAULT '0.000',
+  `product_cost_price_inc_vat` decimal(5,3) DEFAULT '0.000',
+  `product_sp_inc_vat` decimal(5,3) DEFAULT '0.000',
+  PRIMARY KEY (`product_detail_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table jp.product_group: 1 rows
-/*!40000 ALTER TABLE `product_group` DISABLE KEYS */;
-REPLACE INTO `product_group` (`product_group_id`, `product_group_name`, `product_group_label`, `product_group_label_en_UK`, `product_group_brand`, `product_group_brand_en_UK`, `product_group_sales_rank`, `hide_product_group`) VALUES
-	(1, 'Beechams Cold & Flu', 'Beechams Cold & Flu', 'Beechams Cold & Flu', 'Hot Lemon & Honey', 'Hot Lemon & Honey', 0, 0);
-/*!40000 ALTER TABLE `product_group` ENABLE KEYS */;
+-- Dumping data for table jp.product_detail: 3 rows
+/*!40000 ALTER TABLE `product_detail` DISABLE KEYS */;
+REPLACE INTO `product_detail` (`product_detail_id`, `product_id`, `product_detail_name`, `product_detail_label`, `product_detail_keyword`, `product_detail_description`, `product_detail_attribute`, `dispense_ml`, `dispense_mg`, `dispense_number`, `product_rrp`, `product_cost_price_inc_vat`, `product_sp_inc_vat`) VALUES
+	(1, 0, 'Beechams Cold & Flu', 'Beechams Cold & Flu', '', '', '', 0, 0, 0, 0.000, 0.000, 0.000),
+	(2, 3, 'Regaine Foam Single Pack', 'Regaine Foam Single Pack', '', '', '', 60, 0, 1, 0.000, 0.000, 0.000),
+	(3, 3, 'Regaine Foam Triple Pack', 'Regaine Foam Triple Pack', '', '', '', 60, 0, 3, 0.000, 0.000, 0.000);
+/*!40000 ALTER TABLE `product_detail` ENABLE KEYS */;
 
 
--- Dumping structure for table jp.product_image
-DROP TABLE IF EXISTS `product_image`;
-CREATE TABLE IF NOT EXISTS `product_image` (
-  `product_image_id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL DEFAULT '0',
+-- Dumping structure for table jp.product_detail_image
+DROP TABLE IF EXISTS `product_detail_image`;
+CREATE TABLE IF NOT EXISTS `product_detail_image` (
+  `product_detail_image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_detail_id` int(11) NOT NULL DEFAULT '0',
   `image_id` int(11) NOT NULL DEFAULT '0',
+  `image_extension` varchar(7) NOT NULL DEFAULT 'png',
   `flag_default` tinyint(1) NOT NULL DEFAULT '0',
   `flag_hide` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`product_image_id`),
-  KEY `product_id` (`product_id`),
-  KEY `image_id` (`image_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`product_detail_image_id`),
+  KEY `product_id` (`product_detail_id`),
+  KEY `image_id` (`image_id`),
+  KEY `product_detail_id_image_id` (`product_detail_id`,`image_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table jp.product_image: 0 rows
-/*!40000 ALTER TABLE `product_image` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product_image` ENABLE KEYS */;
+-- Dumping data for table jp.product_detail_image: 2 rows
+/*!40000 ALTER TABLE `product_detail_image` DISABLE KEYS */;
+REPLACE INTO `product_detail_image` (`product_detail_image_id`, `product_detail_id`, `image_id`, `image_extension`, `flag_default`, `flag_hide`) VALUES
+	(1, 2, 1, 'jpg', 1, 0),
+	(2, 3, 2, 'jpg', 1, 0);
+/*!40000 ALTER TABLE `product_detail_image` ENABLE KEYS */;
 
 
 -- Dumping structure for table jp.question

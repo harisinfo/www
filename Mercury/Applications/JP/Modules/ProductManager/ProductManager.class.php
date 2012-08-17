@@ -57,30 +57,50 @@ class ProductManager extends LoginManager
 		{
 			while($row=$result->fetch_array(MYSQLI_ASSOC))
 			{
-				$response['product_id'][ $row['product_id'] ] = $row['product_id'];
-				$response['product_name'][ $row['product_id'] ] = $row['product_name'];
-				$response['brand'][ $row['product_id'] ] = $row['brand'];
-				$response['product_keyword'][ $row['product_id'] ] = $row['product_keyword'];
-				$response['product_title'][ $row['product_id'] ] = $row['product_title'];
-				$response['product_attributes'][ $row['product_id'] ] = $row['product_attributes'];
-				$response['rrp'][ $row['product_id'] ] = $row['rrp'];
-				$response['flag_requires_questionaire'][ $row['product_id'] ] = $row['flag_requires_questionaire'];
-				$response['flag_requires_doctor_approval'][ $row['product_id'] ] = $row['flag_requires_doctor_approval'];
+				$response['product']['product_id'][ $row['product_id'] ] = $row['product_id'];
+				$response['product']['brand'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['brand'];
+				$response['product']['product_keyword'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_keyword'];
+				$response['product']['product_title'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_title'];
+				$response['product']['product_description'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_description'];
+				$response['product']['product_attributes'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_attributes'];
+				$response['product']['flag_requires_questionaire'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['flag_requires_questionaire'];
+				$response['product']['flag_requires_doctor_approval'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['flag_requires_doctor_approval'];
+				$response['product']['product_description'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_description'];
+				$response['product']['product_keyword'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_keyword'];
 				
-					if(isset($request['search']['product_id'])===TRUE && is_int($request['search']['product_id'])===TRUE)
-					{
-						$response['product_description'][ $row['product_id'] ] = $row['product_description'];
-					}
+				// Product Details
+				$response['product']['product_name'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_detail_name'];
+				$response['product']['rrp'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_rrp'];
+				$response['product']['product_detail_name'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_detail_name'];
+				$response['product']['product_detail_description'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_detail_description'];
+				
+				$response['product']['product_detail_image_main'][ $row['product_id'] ][ $row['product_detail_id'] ] = 
+					__PRODUCT_IMAGES_DIR . $row['image_id'] . '.' . $row['image_extension'];
+				
+				
+				if(isset($request['search']['product_id'])===TRUE&&is_int(intval($request['search']['product_id']))===TRUE
+					&&intval($request['search']['product_id'])>0)
+				{
+					$response['product']['product_detail_attribute'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_detail_attribute'];
+					$response['product']['product_detail_keyword'][ $row['product_id'] ][ $row['product_detail_id'] ] = $row['product_detail_keyword'];
+				}
+					
 			}
 		}
 		
+		//echo "<pre>"; print_r($response['product']); echo "</pre>";
 		return $response;
 	}
 	
 	
 	private function buildNormalProductQuery($request)
 	{
-		$p_sql = "SELECT p.*, pi.image_id FROM product AS p LEFT JOIN product_image AS pi ON (pi.product_id = p.product_id) ";
+		$p_sql = "SELECT p.*, pdi.image_id, pdi.image_extension, 
+					pd.product_detail_id, pd.product_rrp, pd.product_sp_inc_vat, pd.product_detail_label, 
+					pd.product_detail_name, pd.dispense_ml, pd.dispense_number, pd.dispense_mg 
+					FROM product AS p 
+					LEFT JOIN product_detail AS pd ON (pd.product_id = p.product_id)
+					LEFT JOIN product_detail_image AS pdi ON (pdi.product_detail_id = pd.product_detail_id) ";
 		$where = " WHERE ";
 		$order_by = " ORDER BY ";
 		$where_sql = array();
@@ -108,7 +128,7 @@ class ProductManager extends LoginManager
 		else
 		{
 			// exclude hidden / deleted products		
-			$where_sql[] = " p.flag_hide=0 AND (pi.flag_hide=0 OR pi.flag_hide IS NULL) ";
+			$where_sql[] = " p.flag_hide=0 AND (pdi.flag_hide=0 OR pdi.flag_hide IS NULL) ";
 		}
 		
 		if(count($where_sql)>0)
@@ -122,10 +142,10 @@ class ProductManager extends LoginManager
 		}
 		
 		$order_sql[] = " p.flag_featured_product DESC ";
-		$order_sql[] = " p.rrp ASC ";
+		$order_sql[] = " pd.product_rrp ASC ";
 		$order_by .= implode(",", $order_sql);
 		$sql = $p_sql . $where . $order_by;
-		
+
 		return $sql;
 	}
 	

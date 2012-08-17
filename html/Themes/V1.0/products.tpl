@@ -3,7 +3,7 @@
 <div id="container">
 	{include file='top-bar.tpl'}
 	{include file='navigation-top.tpl'}
-	{include file='home-products.tpl'}
+	{include file='search-products.tpl'}
 	{include file='footer.tpl'}
 </div>
 </body>
