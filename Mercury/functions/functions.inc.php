@@ -397,8 +397,6 @@ function inject_modules($module_name, $request, $cmd)
 				$module = new $class_name;
 				$t_response = $module->init($request, $cmd);
 				
-				echo "<pre>"; var_dump($t_response); echo "</pre>";
-				
 				if($t_response!==FALSE)
 				{
 					$response = array_merge($response,$t_response);

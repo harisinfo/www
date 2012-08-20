@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty 3.1.0, created on 2012-08-15 16:10:52
+<?php /* Smarty version Smarty 3.1.0, created on 2012-08-20 08:55:01
          compiled from "C:\wamp\www\html\Themes\V1.0\register_condition.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:79934ff4747013b7b4-57382220%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a366567a22469463f806aebf896fdbd0c846e062' => 
     array (
       0 => 'C:\\wamp\\www\\html\\Themes\\V1.0\\register_condition.tpl',
-      1 => 1345047049,
+      1 => 1345452329,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'response' => 0,
+    'request' => 0,
+    'p' => 0,
+    'c' => 0,
     'key' => 0,
   ),
   'has_nocache_code' => false,
@@ -35,6 +38,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div id="register" class="register">
 <?php if ($_smarty_tpl->tpl_vars['response']->value['results']=='true'){?>
+<?php $_smarty_tpl->tpl_vars["p"] = new Smarty_variable($_smarty_tpl->tpl_vars['request']->value['search']['product_id'], null, 0);?>
+<?php $_smarty_tpl->tpl_vars["c"] = new Smarty_variable($_smarty_tpl->tpl_vars['request']->value['search']['condition_id'], null, 0);?>
+<?php if ($_smarty_tpl->tpl_vars['response']->value['product']['product_title'][$_smarty_tpl->tpl_vars['p']->value]&&$_smarty_tpl->tpl_vars['response']->value['product']['medical_condition_id'][$_smarty_tpl->tpl_vars['p']->value]){?>
+
+	<?php if ($_smarty_tpl->tpl_vars['response']->value['product']['medical_condition_id'][$_smarty_tpl->tpl_vars['p']->value]==$_smarty_tpl->tpl_vars['c']->value){?>
+
+
+<h1>
+Questionaire for <?php echo $_smarty_tpl->tpl_vars['response']->value['product']['product_title'][$_smarty_tpl->tpl_vars['p']->value];?>
+
+</h1>
+
 <form id="register_condition" name="register_condition" method="POST" value="">
 <input type="hidden" name="ticket" id="ticket" value="<?php echo $_smarty_tpl->tpl_vars['response']->value['ticket'];?>
 " />
@@ -62,6 +77,9 @@ $_loop = true;
 	 	<?php }elseif($_smarty_tpl->tpl_vars['response']->value['question_template'][$_smarty_tpl->tpl_vars['key']->value]=='YES_NO'){?>
 	 		<?php echo $_smarty_tpl->getSubTemplate ('html_helpers/yes_no.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
+	 	<?php }elseif($_smarty_tpl->tpl_vars['response']->value['question_template'][$_smarty_tpl->tpl_vars['key']->value]=='YES_NO_FORCEYES'){?>
+	 		<?php echo $_smarty_tpl->getSubTemplate ('html_helpers/yes_no_forceyes.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 	 	<?php }elseif($_smarty_tpl->tpl_vars['response']->value['question_template'][$_smarty_tpl->tpl_vars['key']->value]=='DD_MM_YYYY'){?>
 	 		<?php echo $_smarty_tpl->getSubTemplate ('html_helpers/dd_mm_yyyy.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
@@ -74,7 +92,10 @@ $_loop = true;
 <input type="Submit" Value="Register for <?php echo $_smarty_tpl->tpl_vars['response']->value['condition_name'];?>
 " />
 </form>
-	 
+
+	<?php }?>
+	
+<?php }?>	 
 <?php }?>
 </div>
 

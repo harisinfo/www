@@ -137,11 +137,11 @@ class FormManager extends SessionManager
 	}
 	
 	
-	protected function saveForm($request, $response, $template)
+	protected function saveFormToSession($request, $response, $template)
 	{
 		// get all the inputs and save form
 		echo "Save Form";
-		$response = $this->saveFormResponse($request, $response, $template);
+		//$response = $this->saveFormResponse($request, $response, $template);
 	}
 	
 	

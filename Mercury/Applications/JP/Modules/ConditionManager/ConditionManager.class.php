@@ -58,7 +58,7 @@ class ConditionManager extends LoginManager
 					
 					if($errors['error_found']===true)
 					{
-						$response = parent::saveFormResponse($request, $response);
+						$response = FormManager::saveFormResponse($request, $response);
 						$response['errors'] = $errors;
 					}
 					else

@@ -4,12 +4,17 @@ include_once( __CORE_DIR . '/FormManager/FormManager.class.php');
 
 class LoginManager extends FormManager
 {
-	public $request;
+	
+	protected $module_name = 'login';
 	
 	public function init($request, $cmd=NULL)
 	{
 		switch($cmd)
     	{
+    		case 'checkloginstatus':
+    			return $this->checkLoginStatus();
+    		break;
+    		
     		case 'login': 
         	return $this->doLogin($request);        
         	break;
@@ -53,45 +58,37 @@ class LoginManager extends FormManager
 	
     private function doLogin($request)
     {
+    	global $connection;
+    	
+    	$this->doLogout();
+    	
 		$response = array();
 		$response['login'] = 'failed';
     	$response['exist'] = false;
     
 		$sql = "SELECT u.user_id, u.user_name FROM user u WHERE u.user_name LIKE '" .
         		$request['search']['user_name']."' AND u.password LIKE '".$request['search']['password']."' ";
-		$esql = mysql_query($sql) or db_die($sql);
-		$n = mysql_num_rows($esql);
-    
+		$result = $connection->query($sql);
+		$n = $result->num_rows;
+    	
 		if($n==1)
 		{
-			while($row=mysql_fetch_array($esql))
+			while($row=$result->fetch_array(MYSQLI_ASSOC))
 			{
+						echo $row['user_id'];
                         $response[encrypt('user_id',KEYHASH)] = encrypt($row['user_id'],KEYHASH);
-                        parent::addSessionEncrypted('user_id',$row['user_id']);
-                        //$_SESSION[encrypt('user_id',KEYHASH)] = encrypt($row['user_id'],KEYHASH);
-
-                        $response[encrypt('user_email',KEYHASH)] = encrypt($row['user_email'],KEYHASH);
-                        parent::addSessionEncrypted('user_email',$row['user_email']);
-                        //$_SESSION[encrypt('user_email',KEYHASH)] = encrypt($row['user_email'],KEYHASH);
-
-                        /*$response[encrypt('first_name',KEYHASH)] = encrypt($row['first_name'],KEYHASH);
-                        $_SESSION[encrypt('first_name',KEYHASH)] = encrypt($row['first_name'],KEYHASH);
-
-                        $response[encrypt('last_name',KEYHASH)] = encrypt($row['last_name'],KEYHASH);
-                        $_SESSION[encrypt('last_name',KEYHASH)] = encrypt($row['last_name'],KEYHASH);*/
-
-                        $response[encrypt('login',KEYHASH)] = encrypt(1,KEYHASH);
-                        //$_SESSION[encrypt('login',KEYHASH)] = encrypt(1,KEYHASH);
-                        parent::addSessionEncrypted('login',1);
+                        SessionManager::addSessionEncrypted('user_id',$row['user_id']);
                         
-                        // ToDo: Save salt for user_name, password string in database
-                        // set as session cookie as an encrypted value, check for salt has changed at any stage
+                        $response[encrypt('login',KEYHASH)] = encrypt(1,KEYHASH);
+                        SessionManager::addSessionEncrypted('login',1);
+                        
+                        // ToDo: Save salt last password modified date
                         
 						$response['login'] = 1;
                         $response['exist'] = true;
 			}
 		}
-
+		
 		return $response;
     }
 
@@ -107,9 +104,48 @@ class LoginManager extends FormManager
     {
         $response = array();
         
+        //dumpVariable($request['session']);
+        
         foreach($request['session'] as $key => $value)
         {
-            $response[decrypt($key, KEYHASH)] = decrypt($value, KEYHASH);
+        	//echo $key . " " . $value . "<br />";
+        	
+        	//echo decrypt($key, KEYHASH) . " " . decrypt($value, KEYHASH) . "<br />";
+        	
+        	switch(decrypt($key, KEYHASH))
+        	{
+				case 'login':
+					$response[decrypt($key, KEYHASH)] = decrypt($value, KEYHASH);
+				break;
+				
+				case 'ticket':
+					$response[$key] = $value;
+				break;
+				
+				case 'user_id':
+					$response[decrypt($key, KEYHASH)] = decrypt($value, KEYHASH);
+				break;
+				
+				case 'c_user_id':
+					$response[decrypt($key, KEYHASH)] = $value;
+				break;
+				
+				default:
+					// do nothing
+					$response['crypt_user_id'] = $value;
+				break;
+        	}
+        	
+        }
+        
+        
+        if($response['user_id'] == $response['c_user_id'])
+        {
+			echo "Login";
+        }
+        else
+        {
+			echo "Data tampered";
         }
         
         return $response;

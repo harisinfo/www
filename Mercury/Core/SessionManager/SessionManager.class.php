@@ -12,7 +12,17 @@ class SessionManager extends dbManager
 	
 	protected function addSessionEncrypted($key,$value)
 	{
-		$_SESSION[encrypt($key,KEYHASH)] = encrypt($value,KEYHASH);
+		//$_SESSION[encrypt($key,KEYHASH)] = encrypt($value,KEYHASH);
+		if($key=='user_id')
+		{
+			$_SESSION[encrypt('c_user_id',KEYHASH)] = crypt($value);
+			$_SESSION[encrypt($key,KEYHASH)] = encrypt($value, KEYHASH);
+		}
+		else
+		{
+			$_SESSION[encrypt($key,KEYHASH)] = encrypt($value,KEYHASH);
+		}
+		
 		return TRUE;
 	}
 	
