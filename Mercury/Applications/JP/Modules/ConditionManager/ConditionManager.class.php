@@ -4,7 +4,7 @@
 *														*
 ********************************************************/
 
-include_once( __APPLICATIONS_ROOT . '\\' . __APPLICATION_DIR . '\\' . __MODULE_DIR .'\\LoginManager\\LoginManager.class.php');
+include_once( __APPLICATIONS_ROOT . '/' . __APPLICATION_DIR . '/' . __MODULE_DIR .'/LoginManager/LoginManager.class.php');
 
 class ConditionManager extends LoginManager
 {    
@@ -28,7 +28,7 @@ class ConditionManager extends LoginManager
 		$response = $this->showConditionManager($request);
 		$inject_response = inject_modules($this->module_name, $request, $cmd);
 		
-		if($inject_response!==FALSE)
+		if($inject_response!==FALSE && $inject_response!=NULL)
 		{
 			$response = array_merge($inject_response, $response);
 		}

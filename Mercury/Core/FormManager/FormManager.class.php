@@ -3,7 +3,7 @@
 *	@Author: Hari Ramamurthy <info@harisinfo.co.uk>		*
 ********************************************************/
 
-include_once( __CORE_DIR . '\\SessionManager\\SessionManager.class.php');
+include_once( __CORE_DIR . '/SessionManager/SessionManager.class.php');
 //include_once( __CORE_DIR . '\\XMLManager\\XMLManager.class.php');
 
 class FormManager extends SessionManager
@@ -49,6 +49,39 @@ class FormManager extends SessionManager
 							$response['error_message'] = MORE_INFO_REQUIRED_YES_SOMETIMES;
 						}
 							
+					}
+					else
+					{
+						$response['error_flag'] = true;
+						$response['error_message'] = ANSWER_SELECTION_REQUIRED;
+					}
+					
+				break;
+				
+				case 'YES_NO_FORCEYES':
+				
+					if(isset($request['answer'][$key]) === true)
+					{
+						if(intval($request['answer'][$key]) == 0)
+						{
+							$response['error_flag'] = true;
+							$response['error_message'] = ANSWER_SELECTION_REQUIRED;
+						}
+							
+					}
+					else
+					{
+						$response['error_flag'] = true;
+						$response['error_message'] = ANSWER_SELECTION_REQUIRED;
+					}
+					
+				break;
+				
+				case 'YES_NO':
+				
+					if(isset($request['answer'][$key]) === true)
+					{
+						// Do Nothing		
 					}
 					else
 					{
@@ -113,7 +146,7 @@ class FormManager extends SessionManager
 	
 	
 	
-	protected function saveFormResponse($request, $response, $template)
+	protected function saveFormResponse($request, $response, $template = NULL)
 	{
 		foreach($response['question_id'] as $key=>$value)
 		{

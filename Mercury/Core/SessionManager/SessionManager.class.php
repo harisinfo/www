@@ -1,6 +1,6 @@
 <?php
 
-include_once( __CORE_DIR . '\\DBManager\\dbManager.class.php');
+include_once( __CORE_DIR . '/DBManager/dbManager.class.php');
 
 class SessionManager extends dbManager
 {	

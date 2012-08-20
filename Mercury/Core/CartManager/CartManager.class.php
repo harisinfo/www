@@ -4,7 +4,7 @@
 *														*
 ********************************************************/
 
-include_once( __CORE_DIR . '\\SessionManager\\SessionManager.class.php');
+include_once( __CORE_DIR . '/SessionManager/SessionManager.class.php');
 
 class CartManager extends SessionManager
 {    

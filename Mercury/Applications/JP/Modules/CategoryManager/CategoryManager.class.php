@@ -1,6 +1,6 @@
 <?php
 
-include_once( __CORE_DIR . '\\URLManager\\URLManager.class.php');
+include_once( __CORE_DIR . '/URLManager/URLManager.class.php');
 
 class CategoryManager extends URLManager
 {
@@ -8,7 +8,10 @@ class CategoryManager extends URLManager
 	
 	public function init($request, $cmd = FALSE)
 	{
+		global $registered_modules;
+		
 		$response = array();
+		
 		switch($cmd)
 		{
 			case '':
@@ -17,6 +20,13 @@ class CategoryManager extends URLManager
 			break;
 		}
 		
+		$inject_response = inject_modules($this->module_name, $request, $cmd);
+		
+		if($inject_response!==FALSE && $inject_response!=NULL)
+		{
+			$response = array_merge($inject_response, $response);
+		}
+
 		return $response;
 	}
 	

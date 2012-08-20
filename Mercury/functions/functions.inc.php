@@ -311,7 +311,7 @@ function create_dispatcher($request=NULL)
 				//$class_name = ucfirst(strtolower($request['search']['module'])).$default_class_suffix;
 				$class_name = $registered_modules[$request['search']['module']]['manager_name'];
 				
-				include_once( __APPLICATIONS_ROOT . "\\" . __APPLICATION_DIR . "\\" . __MODULE_DIR . "\\$class_name\\$class_name".$default_class_extension );
+				include_once( __APPLICATIONS_ROOT . "/" . __APPLICATION_DIR . "/" . __MODULE_DIR . "/{$class_name}/{$class_name}".$default_class_extension );
 				
     				if (!class_exists($class_name, false)) 
     				{
@@ -381,13 +381,14 @@ function inject_modules($module_name, $request, $cmd)
 		foreach( $registered_modules[$module_name]['attach_module'] as $key => $value )
 		{
 			$class_name = $registered_modules[$module_name]['attach_module'][$key];
-			include_once( __APPLICATIONS_ROOT . "\\" . __APPLICATION_DIR . "\\" . __MODULE_DIR . "\\$class_name\\$class_name".$default_class_extension );
+			
+			include_once( __APPLICATIONS_ROOT . "/" . __APPLICATION_DIR . "/" . __MODULE_DIR . "/{$class_name}/{$class_name}".$default_class_extension );
 			
 			if (!class_exists($class_name, false)) 
     		{
         				die_with_header(400, "Injection Failed for {$key} could not include " . 
-        								__APPLICATIONS_ROOT . "\\" . __APPLICATION_DIR . "\\" . __MODULE_DIR . 
-        								"\\$class_name\\$class_name".$default_class_extension);
+        								__APPLICATIONS_ROOT . "/" . __APPLICATION_DIR . "/" . __MODULE_DIR . 
+        								"/{$class_name}/{$class_name}".$default_class_extension);
         				
     		}
     				
@@ -395,6 +396,8 @@ function inject_modules($module_name, $request, $cmd)
 			{
 				$module = new $class_name;
 				$t_response = $module->init($request, $cmd);
+				
+				echo "<pre>"; var_dump($t_response); echo "</pre>";
 				
 				if($t_response!==FALSE)
 				{

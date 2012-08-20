@@ -15,5 +15,5 @@ define( 'LOG4PHP_DIR' , 'log4php' );
 
 $db['host'] = "localhost";
 $db['user'] = "root";
-$db['password'] = "";
+$db['password'] = "root";
 $db['db_name'] = "jp";

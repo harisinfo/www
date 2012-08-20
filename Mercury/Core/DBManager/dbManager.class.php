@@ -5,7 +5,7 @@
 * @version: 1.0
 */
 
-include_once( __CORE_DIR . '\\XMLManager\\XMLManager.class.php');
+include_once( __CORE_DIR . '/XMLManager/XMLManager.class.php');
 
 class dbManager extends XMLManager 
 {

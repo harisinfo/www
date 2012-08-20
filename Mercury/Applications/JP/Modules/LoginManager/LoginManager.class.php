@@ -1,6 +1,6 @@
 <?php
 
-include_once( __CORE_DIR . '\\FormManager\\FormManager.class.php');
+include_once( __CORE_DIR . '/FormManager/FormManager.class.php');
 
 class LoginManager extends FormManager
 {

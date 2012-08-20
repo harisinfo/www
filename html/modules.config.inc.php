@@ -62,7 +62,7 @@ $registered_modules['home']['template'] = 'home.tpl';
 
 $registered_modules['product']['name'] = 'product';
 $registered_modules['product']['manager_name'] = 'ProductManager';
-$registered_modules['home']['attach_module']['CategoryManager'] = 'CategoryManager';
+$registered_modules['product']['attach_module']['CategoryManager'] = 'CategoryManager';
 //$registered_modules['home']['attach_module']['LoginManager'] = 'LoginManager';
 $registered_modules['product']['template'] = 'products.tpl';
 
@@ -90,6 +90,7 @@ $registered_modules['login']['template'] = 'login.tpl';
 $registered_modules['condition']['name'] = 'condition';
 $registered_modules['condition']['manager_name'] = 'ConditionManager';
 $registered_modules['condition']['attach_module']['CategoryManager'] = 'CategoryManager';
+$registered_modules['condition']['attach_module']['ProductManager'] = 'ProductManager';
 
 $registered_modules['condition']['requires_history'] = true;
 $registered_modules['condition']['history_module'] = 'user_condition';

@@ -4,7 +4,7 @@
 *														*
 ********************************************************/
 
-include_once( __APPLICATIONS_ROOT . '\\' . __APPLICATION_DIR . '\\' . __MODULE_DIR .'\\ProductManager\\ProductManager.class.php');
+include_once( __APPLICATIONS_ROOT . '/' . __APPLICATION_DIR . '/' . __MODULE_DIR .'/ProductManager/ProductManager.class.php');
 
 class HomePageManager extends ProductManager
 {   
