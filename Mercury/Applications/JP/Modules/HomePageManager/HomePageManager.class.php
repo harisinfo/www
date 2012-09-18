@@ -8,7 +8,7 @@ include_once( __APPLICATIONS_ROOT . '/' . __APPLICATION_DIR . '/' . __MODULE_DIR
 
 class HomePageManager extends ProductManager
 {   
-	private $module_name = 'home';
+	protected $module_name = 'home';
 
 	public function init($request, $cmd = FALSE )
 	{

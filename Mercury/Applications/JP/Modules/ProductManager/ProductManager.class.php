@@ -8,7 +8,7 @@ include_once( __APPLICATIONS_ROOT . '/' . __APPLICATION_DIR . '/' . __MODULE_DIR
 class ProductManager extends LoginManager
 {   
  
-	private $module_name = 'product';
+	protected $module_name = 'product';
 	
 	public function init($request, $cmd = FALSE )
 	{

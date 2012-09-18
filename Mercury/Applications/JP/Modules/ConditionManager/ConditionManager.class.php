@@ -11,7 +11,7 @@ class ConditionManager extends LoginManager
 	
 	private $validateCondition = "validateConditionManager";
 	private $template = '';
-	private $module_name = "condition";
+	protected $module_name = "condition";
 
 	function __construct()
 	{

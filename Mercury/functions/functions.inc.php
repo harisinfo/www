@@ -299,7 +299,11 @@ function die_with_header($error_code, $msg)
 
 function create_dispatcher($request=NULL)
 {
-	include("modules.config.inc.php");
+	$include_modules = strtolower(__APPLICATION_DIR) . ".modules.config.inc.php";
+	//include("modules.config.inc.php");
+	if(!@include($include_modules)) die_with_header(404, "$include_modules not found, incorrect application settings.");
+	
+	
 	global $registered_modules;
 	
 	if(isset($request)===TRUE)
