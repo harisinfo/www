@@ -1,21 +1,30 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set("display_errors", 1);
+ini_set("display_errors", 0);
 ini_set("include_path","C:\\wamp\\www\\Mercury");
 
 include_once('config.inc.php');
 
+// include application level configuration
 if(isset($_REQUEST['application'])===TRUE)
 {
+	// @to-do: secure this code
 	$include_site_config = mysql_escape_string($_REQUEST['application']).".config.inc.php";
 }
 
-if(!@include($include_site_config)) die_with_header(404, "$include_site_config not found, incorrect application settings.");
+if(!@include($include_site_config)) die_with_header(404, "File Not Found");
 
-
+// include application level constants
 include_once( __APPLICATIONS_ROOT . '/' . __APPLICATION_DIR . '/' .'constants.config.inc.php');
-include_once('dataconnect.php');
+
+// Prepare database connection
+global $db;
+if(isset($db['host'])===TRUE&&trim($db['host'])!='')
+{
+	//@to-do - create pure dependency injection here
+	if(!@include_once('dataconnect.php')) die_with_header(500, "Internal Server Error");
+}
 
 // Include Plugins
 include_once( __PLUGIN_DIR . '/Smarty/libs/Smarty.class.php');
@@ -60,6 +69,6 @@ if(isset($dispatch['class_name'])===TRUE)
 }
 else
 {
-	die_with_header(500,"Internal Server Error, application configuration error");
+	die_with_header(500, "Internal Server Error, application configuration error");
 	exit;
 }
