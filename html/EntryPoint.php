@@ -69,6 +69,6 @@ if(isset($dispatch['class_name'])===TRUE)
 }
 else
 {
-	die_with_header(500, "Internal Server Error, application configuration error");
+	die_with_header(500, "Internal Server Error");
 	exit;
 }

@@ -300,9 +300,7 @@ function die_with_header($error_code, $msg)
 function create_dispatcher($request=NULL)
 {
 	$include_modules = strtolower(__APPLICATION_DIR) . ".modules.config.inc.php";
-	//include("modules.config.inc.php");
-	if(!@include($include_modules)) die_with_header(404, "$include_modules not found, incorrect application settings.");
-	
+	if(!@include($include_modules)) die_with_header(404, "Page Not Found");
 	
 	global $registered_modules;
 	
@@ -312,14 +310,13 @@ function create_dispatcher($request=NULL)
 		{
 			if(isset($registered_modules[$request['search']['module']]['name'])===true)
 			{
-				//$class_name = ucfirst(strtolower($request['search']['module'])).$default_class_suffix;
 				$class_name = $registered_modules[$request['search']['module']]['manager_name'];
 				
 				include_once( __APPLICATIONS_ROOT . "/" . __APPLICATION_DIR . "/" . __MODULE_DIR . "/{$class_name}/{$class_name}".$default_class_extension );
 				
     				if (!class_exists($class_name, false)) 
     				{
-        				die_with_header(500, "Bad Request no class by this name");
+        				die_with_header(500, "Internal Server Error");
     				}
     				
     				if(class_exists($class_name)===true)
@@ -349,12 +346,12 @@ function create_dispatcher($request=NULL)
 			}
 			else
 			{
-				die_with_header(500, "Bad Request - module not defined");
+				die_with_header(500, "Internal Server Error");
 			}
 		}
 		else
 		{
-			die_with_header(500, "Bad Request - no module present");
+			die_with_header(500, "Internal Server Error");
 		}
 	}
 	else

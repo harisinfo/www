@@ -7,6 +7,7 @@
 class ContentManager
 {   
 	protected static $module_name = 'content';
+	
 
 	public static function init($request, $cmd = FALSE )
 	{

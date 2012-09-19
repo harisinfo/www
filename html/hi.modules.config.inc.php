@@ -10,9 +10,15 @@ $default_class_extension = ".class.php";
 $registered_modules['home']['name'] = 'home';
 $registered_modules['home']['manager_name'] = 'HomePageManager';
 $registered_modules['home']['attach_module']['ContentManager'] = 'ContentManager';
+$registered_modules['home']['attach_module']['PromotionManager'] = 'PromotionManager';
 $registered_modules['home']['template'] = 'home.tpl';
 
 // content
 $registered_modules['content']['name'] = 'content';
 $registered_modules['content']['manager_name'] = 'ContentManager';
 $registered_modules['content']['template'] = 'home.tpl';
+
+// promotion
+$registered_modules['promotion']['name'] = 'promotion';
+$registered_modules['promotion']['manager_name'] = 'PromotionManager';
+$registered_modules['promotion']['template'] = 'home.tpl';
