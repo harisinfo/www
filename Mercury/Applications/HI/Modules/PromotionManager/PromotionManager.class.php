@@ -8,7 +8,6 @@ class PromotionManager
 {   
 	protected static $module_name = 'promotion';
 	
-
 	public static function init($request, $cmd = FALSE )
 	{
 		global $registered_modules;
@@ -22,6 +21,14 @@ class PromotionManager
 		}
 		
 		return $response;
+	}
+	
+	
+	public function getPromotion()
+	{
+		$response = array();
+		$sql = "SELECT ";
+		return $response;	
 	}
 	
 }

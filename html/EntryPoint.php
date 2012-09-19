@@ -5,6 +5,7 @@ ini_set("display_errors", 0);
 ini_set("include_path","C:\\wamp\\www\\Mercury");
 
 include_once('config.inc.php');
+include_once('functions/functions.inc.php');
 
 // include application level configuration
 if(isset($_REQUEST['application'])===TRUE)

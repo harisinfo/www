@@ -2,6 +2,7 @@
 
 define('KEYHASH' , 'v6*pV!L5b!tSF@d~)x2T(Mi_');
 
+define('__SIMPLETEST_ROOT', 'simpletest');
 define('__APPLICATIONS_ROOT', 'Applications');
 define('__MODULE_DIR', 'Modules');
 define('__PLUGIN_DIR', 'Plugins');

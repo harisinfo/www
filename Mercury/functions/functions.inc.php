@@ -302,7 +302,7 @@ function create_dispatcher($request=NULL)
 	$include_modules = strtolower(__APPLICATION_DIR) . ".modules.config.inc.php";
 	if(!@include($include_modules)) die_with_header(404, "Page Not Found");
 	
-	global $registered_modules;
+	global $registered_modules, $default_class_extension, $default_template_variable, $default_test_file;
 	
 	if(isset($request)===TRUE)
 	{
@@ -323,6 +323,12 @@ function create_dispatcher($request=NULL)
 					{
 						$response['name'] = $registered_modules[$request['search']['module']]['name'];
 						$response['class_name'] = $class_name;
+						
+						if(isset($request['search']['test_suite'])===TRUE&&$request['search']['test_suite']==1)
+						{
+							$test_file = $registered_modules[$request['search']['module']]['manager_name'].".".$default_test_file.".php";
+							$response['test_file'] = __APPLICATIONS_ROOT . "/" . __APPLICATION_DIR . "/" . __MODULE_DIR . "/{$class_name}/".$test_file;
+						}
 						
 						if(isset($registered_modules[$request['search']['module']]['requires_login'])===TRUE)
 						{

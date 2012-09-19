@@ -1,7 +1,6 @@
 <?php
 global $debug;
 
-include_once('functions/functions.inc.php');
 $request = array();
 
 if(isset($_REQUEST))

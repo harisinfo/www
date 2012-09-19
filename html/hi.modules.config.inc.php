@@ -1,10 +1,11 @@
 <?php
-global $default_template_variable, $registered_modules, $default_class_suffix, $default_class_extension;
+global $default_template_variable, $registered_modules, $default_class_suffix, $default_class_extension, $default_test_file;
 
 // used by dispatcher
 $default_template_variable = 'response';
 $default_class_suffix = "Manager";
 $default_class_extension = ".class.php";
+$default_test_file = 'Test';
 
 // home page
 $registered_modules['home']['name'] = 'home';
