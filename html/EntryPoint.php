@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set("display_errors", 0);
+ini_set("display_errors", 1);
 ini_set("include_path","C:\\wamp\\www\\Mercury");
 
 include_once('config.inc.php');
@@ -41,6 +41,7 @@ include_once( __APPLICATIONS_ROOT . '/' . __APPLICATION_DIR . '/' . __MODULE_DIR
 
 // Create dispatcher, Modules loaded on the fly - Factory
 $dispatch = create_dispatcher($request);
+
 $login_manager = new LoginManager($request);
 $login_response = $login_manager->checkIfLoggedIn($request,$dispatch);
 

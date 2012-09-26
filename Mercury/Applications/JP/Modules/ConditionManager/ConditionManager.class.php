@@ -63,8 +63,8 @@ class ConditionManager extends LoginManager
 					}
 					else
 					{
-						$this->template = parent::loadXML($this->template);
-						parent::saveForm($request, $response, $this->template);
+						//$this->template = parent::loadXML($this->template);
+						FormManager::saveForm($request, $response, $this->template);
 						//$this->saveConditionRelatedQuestions($request);
 						exit;
 					}

@@ -19,7 +19,6 @@ class ProductManager extends LoginManager
 		$response = $this->showProductManager($request);
 		$inject_response = inject_modules($this->module_name, $request, $cmd);	
 		
-		
 		if($inject_response!==FALSE&&$inject_response!=NULL)
 		{
 			$response = array_merge($inject_response, $response);

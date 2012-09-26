@@ -2,7 +2,7 @@
 	{foreach key=key item=item from=$response.product.product_id}
 	<div id="product_{$key}">
 		<h2>
-		<a href="?module=product&category={$request.search.category_id}&sub_category_id={$request.search.sub_category_id}&product_id={$key}">
+		<a href="?application=JP&module=product&category={$request.search.category_id}&sub_category_id={$request.search.sub_category_id}&product_id={$key}">
 		{$response.product.product_title.$key}</a>
 		</h2> 
 		<div class="about_product">
@@ -69,7 +69,8 @@
 				
 				<div id="product_order_{$key}">
 				{if $response.product.medical_condition_id.$key}
-					<a href="?module=condition&condition_id={$response.product.medical_condition_id.$key}&product_id={$response.product.product_id.$key}">
+					<a href="?application=JP&module=condition&condition_id={$response.product.medical_condition_id.$key}
+					&product_id={$response.product.product_id.$key}">
 					Start Free Consultation to Order</a>
 				{else}
 					<a href="add">Add to Basket</a>

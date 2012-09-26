@@ -7,8 +7,14 @@
 <div id="register" class="register">
 {if $response.results == 'true'}
 
-{assign var="p" value=$request.search.product_id}
-{assign var="c" value=$request.search.condition_id}
+{if $request.search.product_id}
+	{assign var="p" value=$request.search.product_id}
+{/if}
+
+{if $request.search.condition_id}
+	{assign var="c" value=$request.search.condition_id}
+{/if}
+
 {if $response.product.product_title.$p && $response.product.medical_condition_id.$p}
 
 	{if $response.product.medical_condition_id.$p == $c}

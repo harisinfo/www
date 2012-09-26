@@ -141,7 +141,7 @@ class LoginManager extends FormManager
         
         if($response['user_id'] == $response['c_user_id'])
         {
-			echo "Login";
+			//echo "Login";
         }
         else
         {

@@ -143,8 +143,7 @@ class FormManager extends SessionManager
 		echo "Save Form";
 		//$response = $this->saveFormResponse($request, $response, $template);
 	}
-	
-	
+
 	
 	protected function saveFormResponse($request, $response, $template = NULL)
 	{
@@ -181,6 +180,13 @@ class FormManager extends SessionManager
 		}
 		
 		return $response;
+	}
+	
+	
+	protected function saveForm($request, $response, $template)
+	{
+		
+		echo "Save Me";
 	}
     
 }
